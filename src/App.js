@@ -1,12 +1,11 @@
-import React from 'react';
-
+import {React, Component} from 'react';
 import { Cards, CountryPicker, Chart } from './components';
 import { fetchData } from './api/';
 import styles from './App.module.css';
 
 import image from './images/image.png';
-
-class App extends React.Component {
+//stateful components
+class App extends Component {
   state = {
     data: {},
     country: '',
@@ -14,13 +13,11 @@ class App extends React.Component {
 
   async componentDidMount() {
     const data = await fetchData();
-
     this.setState({ data });
   }
 
-  handleCountryChange = async (country) => {
+  const handleCountryChange = async (country) => {
     const data = await fetchData(country);
-
     this.setState({ data, country: country });
   }
 
